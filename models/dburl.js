@@ -1,21 +1,14 @@
-var express = require('express');
-var rand = require('random-key');
-var valid = require('url-valid');
-var mongodb = require('mongodb');
-var assert = require('assert');
-var router = express.Router();
+var mongo = require ('./db/db.js');
 
-var MongoClient = mongodb.MongoClient;
-process.env.MONGOLAB_URI = 'mongodb://toni55:123Abc@ds029585.mlab.com:29585/heroku_nxwpshrb';
-var urldb = process.env.MONGOLAB_URI;
-//console.log(urldb);
+var url_insert = function(){
 
-MongoClient.connect(urldb, function (err, db) {
+mongo.connect(urldb, function (err, db) {
   var docs = db.collection('shorturl');
   if (err) {
     console.log('Unable to connect to the mongoDB server. Error:', err);
   } else {
     console.log('Connection established to MongoDB mLab');
+
     router.get('/*', function(req, res) {
       var url2short = req.url.substring(1),
           num_url= rand.generateDigits(4),
@@ -28,7 +21,7 @@ MongoClient.connect(urldb, function (err, db) {
         valid ?  res.json(response) : res.json({error:"URL not valid"});
         console.log(url2short,valid);
       });//end valid
-      if(){}//controlar si existe ya la página
+      //if(){}//controlar si existe ya la página
       docs.insert({
         original_url:url2short,
         num_url: parseInt(num_url)
@@ -39,4 +32,4 @@ MongoClient.connect(urldb, function (err, db) {
     });// end router
   }
 });
-module.exports = router;
+};
