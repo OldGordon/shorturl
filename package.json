@@ -10,6 +10,7 @@
     "express": "~4.0.0",
     "mongodb": "^2.2.5",
     "random-key": "^0.3.2",
-    "url-valid": "^0.3.0"
+    "url-valid": "^0.3.0",
+    "valid-url": "^1.0.9"
   }
 }
