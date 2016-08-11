@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient,
     assert = require('assert');
 
-process.env.MONGOLAB_URI = 'mongodb://toni55:123Abc@ds029585.mlab.com:29585/heroku_nxwpshrb';
+process.env.MONGOLAB_URI = '';
 var urldb = process.env.MONGOLAB_URI;
 
 //console.log(urldb);
